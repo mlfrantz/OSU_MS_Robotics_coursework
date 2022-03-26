@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: cs519_hw5_frantz.aux
+The style file: ieeetr.bst
+Database file #1: hw5.bib.bib
+Warning--entry type for "NewYorker" isn't style-file defined
+--line 52 of file hw5.bib.bib
+Warning--entry type for "VentureBeat" isn't style-file defined
+--line 70 of file hw5.bib.bib
+Warning--entry type for "Dota2" isn't style-file defined
+--line 88 of file hw5.bib.bib
+Warning--entry type for "QuakeIII" isn't style-file defined
+--line 106 of file hw5.bib.bib
+You've used 8 entries,
+            1876 wiz_defined-function locations,
+            531 strings with 5239 characters,
+and the built_in function-call counts, 2036 in all, are:
+= -- 169
+> -- 123
+< -- 0
++ -- 45
+- -- 37
+* -- 152
+:= -- 312
+add.period$ -- 8
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 84
+empty$ -- 186
+format.name$ -- 37
+if$ -- 476
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 4
+newline$ -- 27
+num.names$ -- 10
+pop$ -- 38
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 70
+stack$ -- 0
+substring$ -- 95
+swap$ -- 34
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 17
+width$ -- 9
+write$ -- 70
+(There were 4 warnings)

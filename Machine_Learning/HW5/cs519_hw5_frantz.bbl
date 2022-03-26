@@ -1,0 +1,40 @@
+\begin{thebibliography}{1}
+
+\bibitem{DBLP:journals/corr/MnihKSGAWR13}
+V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~Graves, I.~Antonoglou, D.~Wierstra, and
+  M.~A. Riedmiller, ``Playing atari with deep reinforcement learning,'' {\em
+  CoRR}, vol.~abs/1312.5602, 2013.
+
+\bibitem{Mnih2015}
+V.~Mnih, K.~Kavukcuoglu, D.~Silver, A.~A. Rusu, J.~Veness, M.~G. Bellemare,
+  A.~Graves, M.~Riedmiller, A.~K. Fidjeland, G.~Ostrovski, S.~Petersen,
+  C.~Beattie, A.~Sadik, I.~Antonoglou, H.~King, D.~Kumaran, D.~Wierstra,
+  S.~Legg, and D.~Hassabis, ``Human-level control through deep reinforcement
+  learning,'' {\em Nature}, vol.~518, pp.~529 EP --, Feb 2015.
+
+\bibitem{NewYorker}
+N.~Twilley, ``Artificial intelligence goes to the arcade,'' 2015.
+
+\bibitem{VentureBeat}
+K.~Wiggers, ``Openai and deepmind ai system achieves ‘superhuman’
+  performance in pong and enduro,'' 2018.
+
+\bibitem{Tesauro:1995:TDL:203330.203343}
+G.~Tesauro, ``Temporal difference learning and td-gammon,'' {\em Commun. ACM},
+  vol.~38, pp.~58--68, Mar. 1995.
+
+\bibitem{10.1007/11564096_32}
+M.~Riedmiller, ``{Neural Fitted Q Iteration -- First Experiences with a Data
+  Efficient Neural Reinforcement Learning Method},'' in {\em Machine Learning:
+  ECML 2005} (J.~Gama, R.~Camacho, P.~B. Brazdil, A.~M. Jorge, and L.~Torgo,
+  eds.), (Berlin, Heidelberg), pp.~317--328, Springer Berlin Heidelberg, 2005.
+
+\bibitem{Dota2}
+N.~Statt, ``Openai’s dota 2 ai steamrolls world champion e-sports team with
+  back-to-back victories,'' 2019.
+
+\bibitem{QuakeIII}
+E.~Gach, ``Google's deepmind ai takes down human players in quake iii's capture
+  the flag mode,'' 2019.
+
+\end{thebibliography}

@@ -1,0 +1,156 @@
+@article{DBLP:journals/corr/MnihKSGAWR13,
+  author    = {Volodymyr Mnih and
+               Koray Kavukcuoglu and
+               David Silver and
+               Alex Graves and
+               Ioannis Antonoglou and
+               Daan Wierstra and
+               Martin A. Riedmiller},
+  title     = {Playing Atari with Deep Reinforcement Learning},
+  journal   = {CoRR},
+  volume    = {abs/1312.5602},
+  year      = {2013},
+  url       = {http://arxiv.org/abs/1312.5602},
+  archivePrefix = {arXiv},
+  eprint    = {1312.5602},
+  timestamp = {Mon, 13 Aug 2018 16:47:42 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/MnihKSGAWR13},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Mnih2015,
+author={Mnih, Volodymyr
+and Kavukcuoglu, Koray
+and Silver, David
+and Rusu, Andrei A.
+and Veness, Joel
+and Bellemare, Marc G.
+and Graves, Alex
+and Riedmiller, Martin
+and Fidjeland, Andreas K.
+and Ostrovski, Georg
+and Petersen, Stig
+and Beattie, Charles
+and Sadik, Amir
+and Antonoglou, Ioannis
+and King, Helen
+and Kumaran, Dharshan
+and Wierstra, Daan
+and Legg, Shane
+and Hassabis, Demis},
+title={Human-level control through deep reinforcement learning},
+journal={Nature},
+year={2015},
+month={Feb},
+day={25},
+publisher={Nature Publishing Group, a division of Macmillan Publishers Limited. All Rights Reserved. SN  -},
+volume={518},
+pages={529 EP  -},
+url={https://doi.org/10.1038/nature14236}
+}
+
+@online{NewYorker,
+author = {Twilley, Nicola},
+title = {Artificial Intelligence Goes to the Arcade},
+year = {2015},
+url = {https://www.newyorker.com/tech/annals-of-technology/deepmind-artificial-intelligence-video-games},
+OPTsubtitle = {•},
+OPTtitleaddon = {•},
+OPTlanguage = {•},
+OPTversion = {•},
+OPTnote = {•},
+OPTorganization = {The New Yorker},
+OPTdate = {•},
+OPTmonth = {•},
+OPTaddendum = {•},
+OPTpubstate = {•},
+OPTurldate = {•},
+}
+
+@online{VentureBeat,
+author = {Wiggers, Kyle},
+title = {OpenAI and DeepMind AI system achieves ‘superhuman’ performance in Pong and Enduro},
+year = {2018},
+url = {https://venturebeat.com/2018/11/16/openai-and-deepmind-ai-system-achieves-superhuman-performance-in-pong-and-enduro/},
+OPTsubtitle = {•},
+OPTtitleaddon = {•},
+OPTlanguage = {•},
+OPTversion = {•},
+OPTnote = {•},
+OPTorganization = {The New Yorker},
+OPTdate = {•},
+OPTmonth = {•},
+OPTaddendum = {•},
+OPTpubstate = {•},
+OPTurldate = {•},
+}
+
+@online{Dota2,
+author = {Statt, Nick},
+title = {OpenAI’s Dota 2 AI steamrolls world champion e-sports team with back-to-back victories},
+year = {2019},
+url = {https://www.theverge.com/2019/4/13/18309459/openai-five-dota-2-finals-ai-bot-competition-og-e-sports-the-international-champion},
+OPTsubtitle = {•},
+OPTtitleaddon = {•},
+OPTlanguage = {•},
+OPTversion = {•},
+OPTnote = {•},
+OPTorganization = {•},
+OPTdate = {•},
+OPTmonth = {•},
+OPTaddendum = {•},
+OPTpubstate = {•},
+OPTurldate = {•},
+}
+
+@online{QuakeIII,
+author = {Gach, Ethan},
+title = {Google's DeepMind AI Takes Down Human Players In Quake III's Capture The Flag Mode},
+year = {2019},
+url = {https://kotaku.com/googles-deepmind-ai-takes-down-human-players-in-quake-i-1835156243},
+OPTsubtitle = {•},
+OPTtitleaddon = {•},
+OPTlanguage = {•},
+OPTversion = {•},
+OPTnote = {•},
+OPTorganization = {•},
+OPTdate = {•},
+OPTmonth = {•},
+OPTaddendum = {•},
+OPTpubstate = {•},
+OPTurldate = {•},
+}
+
+@article{Tesauro:1995:TDL:203330.203343,
+ author = {Tesauro, Gerald},
+ title = {Temporal Difference Learning and TD-Gammon},
+ journal = {Commun. ACM},
+ issue_date = {March 1995},
+ volume = {38},
+ number = {3},
+ month = mar,
+ year = {1995},
+ issn = {0001-0782},
+ pages = {58--68},
+ numpages = {11},
+ url = {http://doi.acm.org/10.1145/203330.203343},
+ doi = {10.1145/203330.203343},
+ acmid = {203343},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+}
+
+
+@InProceedings{10.1007/11564096_32,
+abstract = {This paper introduces NFQ, an algorithm for efficient and effective training of a Q-value function represented by a multi-layer perceptron. Based on the principle of storing and reusing transition experiences, a model-free, neural network based Reinforcement Learning algorithm is proposed. The method is evaluated on three benchmark problems. It is shown empirically, that reasonably few interactions with the plant are needed to generate control policies of high quality.},
+address = {Berlin, Heidelberg},
+author = {Riedmiller, Martin},
+booktitle = {Machine Learning: ECML 2005},
+editor = {Gama, Jo{\~{a}}o and Camacho, Rui and Brazdil, Pavel B and Jorge, Al{\'{i}}pio M{\'{a}}rio and Torgo, Lu{\'{i}}s},
+isbn = {978-3-540-31692-3},
+pages = {317--328},
+publisher = {Springer Berlin Heidelberg},
+title = {{Neural Fitted Q Iteration -- First Experiences with a Data Efficient Neural Reinforcement Learning Method}},
+year = {2005}
+}

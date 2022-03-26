@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage} % Package to use full page
+\usepackage{parskip} % Package to tweak paragraph skipping
+\usepackage{tikz} % Package for drawing
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{amssymb}
+%\usepackage[]{algorithm2e}
+\usepackage{float}
+\usepackage[caption = false]{subfig}
+%\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+%\usepackage{multicol}% http://ctan.org/pkg/multicols
+%\usepackage{graphicx}% http://ctan.org/pkg/graphicx
+%\usepackage{mathrsfs}
+
+\title{%
+  Playing Atari with Deep Reinforcement Learning \\
+  \large CS519 – Home Work \#5 \\}
+    
+\author{Matthew Frantz}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Non-technical background}
+
+The paper that I chose was Playing Atari with Deep Reinforcement Learning from DeepMind Technologies. Authors for this paper are: Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Daan Wierstra, Alex Graves, Ioannis Antonoglou, and Martin Riedmiller. Each of the authors is from DeepMind Technologies which is a British artificial intelligence (AI) company founded in 2010 and was purchased by Alphabet (Google's parent company) in 2014. Several important AI algorithms have come out of DeepMind over the past several years, most famous is the AlphaGo algorithm that bested humans in the game of Go.  The conference paper appears to have Martin Riedmiller as the PI for this paper, but the similar journal has Demis Hassabis who is the founder of DeepMind Technologies. Since I will be focusing on the conference paper I will assume Martin Riedmiller as the PI. All of the Co-Authors were employees of DeepMind at the time of this publishing. 
+
+This paper has two separate versions; a conference and journal version. The conference version was originally published in Conference on Neural Information Processing Systems (NIPS) 2013 and is available via arXiv \cite{DBLP:journals/corr/MnihKSGAWR13}. NIPS is is a machine learning and computational neuroscience conference held annually. The journal version of the paper was published in Nature \cite{Mnih2015}. Both versions of the paper have fairly large impact factors with 2339 citations for the conference version and 5618 citations according to Google Scholars at the time of this writing. The trend for both articles being cited is similar with the number of citations roughly doubling each year since the papers were first published in 2014/2015. This tells me that the work has been gaining a lot of attention in the field. There were several articles over the years discussing this approach. In 2015 when the paper was published The New Yorker magazine published an article about the spectacular demonstration of the algorithm during NIPS \cite{NewYorker} where it learned to play the game breakout allowing people see it learn in real time. The article mentioned that it went from totally inept, to world caliber in roughly 3 hours of training.  In 2018 Venture Beat (a website which reports on technology) posted an article discussing how algorithms like Deep Q-Learning continue to surpass humans in video games \cite{VentureBeat}.
+
+Although there is not a dataset available for this experiment, they did make the code available\footnote{https://sites.google.com/a/deepmind.com/dqn/}  for use. They did not include the emulator they use but that can be downloaded separately. Since the author has been highly sited I imagine the code is also influential. There are several videos available demonstrating this algorithm but there is one that demonstrates the Breakout game performance described above that is particularly good\footnote{https://www.youtube.com/watch?v=V1eYniJ0Rnk}. Based on the journal article it appears that this code is very robust. They tried it on over a dozens different Atari games, with very little changing between games, and achieved excellent results on several of them by outperforming the human expert. This type of reproducibility most likely contributed to its large number of citations and spurred an entire area of research into Deep Q-learning. 
+
+%	Who: Who are the authors? 
+%	Which institutions are they from? 
+%	Who are the PI and who are the students
+%	Are there any interns?
+%	Where: Where and when was this paper published? Note: it's possible that a paper is first published in a conference and later expanded to a journal paper, so check if this is the case. Did this paper receive any recognition such as an award or nomination? Does this paper have impact (number of citations)? Is the impact increasing or decreasing (trend in the number of citations)? Are there media reports about this paper?
+%	Reproducibility: Did the authors create and release any dataset? If not, what the datasets did they use, and are they freely available online? Is there a clear train/dev/test split? Did the authors release their code? Are these datasets and code influential? Is there a demo? Can you find slides or talk videos about this paper? Overall, how reproducible is this paper?
+
+\section{Core}
+
+%    What: What problem are the authors trying to solve? Is this a new problem? If not, what are the notable previous approaches, and what are their limitations?
+
+The authors were looking to tackle the challenge of learning control policies directly from high-dimensional inputs, images from a video game in this instance. According to the authors this had been, "one of the long standing challenges of reinforcement learning (RL)\cite{Mnih2015}". Similar approaches had been attempted previously, most notably was the TD-gammon which used temporal difference learning, a form of reinforcement learning, combined with a neural network to teach itself how to play backgammon from scratch \cite{Tesauro:1995:TDL:203330.203343}. This approach however had less success with games like chess and Go with the authors speculating that since backgammon requires dice rolls it can better explore the state space due to its more stochastic behavior. Another approach was neural fitted Q-learning (NFQ) \cite{10.1007/11564096_32} which required batch updating parameters and used auto-encoders to reduce the dimensionality of the feature space. Batch updating proved to scale with the size of the feature space and proved very costly and auto-encoders removes you from analyzing the raw data. The author manages to overcome both of these problems and will be discussed below.
+
+
+%    Why: Why did they choose this problem? Is it hard? Is it important?
+
+The reason why this problem is so hard is because deep learning and reinforcement learning work on different paradigms. Deep learning had traditionally relied on large amounts of hand labeled training data, where as reinforcement learning requires a scalar reward signals from sequences of examples. Since the reward signals in video games can often be delayed by many time steps it can be difficult for deep learning to learn such a sparse reward signal. Also they mention that deep learning assumes independence between samples, where as reinforcement learning assumes a dependence over a sequence of examples. Finding a way for these two different communities of AI to come together to tackle more difficult problems is definitely an important moment. 
+
+%    How: What's the authors' approach to tackle this problem?
+
+Before the authors could apply any learning techniques they first had to pre-process the images as follows:
+
+\begin{enumerate}
+	\item First the images are preprocessed
+	\begin{enumerate}
+		\item Raw images are 210x160 pixels with 128 color palette.
+		\item Images are down-sampled to 110x84 pixes and colors turned to gray scale.
+		\item Then those images get cropped to 84x84 pixels to allow for square convultions.
+	\end{enumerate}
+	\item The last 4 frames of a history is taken and stacked for use. 
+\end{enumerate}
+
+They then use this sequence of 4 images as the input to the Deep Q-Network (DQN). These preprocessed sequences were then stored for use, this is called experience replay and was key to this algorithm. This was chosen because it allows the network to do only one forward pass per sequence to obtain an action to perform rather than have to learn different Q-functions for different actions which would require multiple forward passes. Also it is difficult to build a network that allows for arbitrary sizes of input vector so they needed to fix the value. Inside of their network the input images went through 2 convolutions and rectifier stages followed by a hidden layer with 256 fully connected rectifier units, followed by the final fully connected layer which has the available actions for the specific game.
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=15cm]{DQN.png}
+\end{center}
+\caption{DQN algorithm.\cite{DBLP:journals/corr/MnihKSGAWR13}}
+\label{fig:DQN}
+\end{figure}
+
+The entire DQN algorithm is show in Figure \ref{fig:DQN} and I will explain it here. In order to learn the weighting parameters in the DQN the system is first initialized with a state and a preprocessed sequence. Then for some number of time steps it selects an action randomly at probably $\epsilon$ or $a_t = max_a Q^* (\phi(s_t),a;\theta)$ which means it takes the best action given its known state and its current parameters. This is known as the $\epsilon$-greedy approach where an action is either selected randomly, or greedily to be the best known action the agent can take at that time. This approach helps avoid local minimum that can result from taking only the max Q-value action. From there it executes the action in the Atari emulator, receives a reward, a new image of the game world, and stores that as the next state and saves it into memory replay. From here it draws random samples of transitions from the replay memory and updates the output value $y_i$ by using the immediate reward and the discounted $Q$ value for the best action sequence in the replay memory samples. It does this for every sample drawn to get try and learn what the best action sequence might be. This gives us a good idea of what the actual value of the $Q$ values are by providing the best discounted future actions values. From here they performed stochastic gradient descent to update the weights from the samples drawn. This repeats for a predefined number of episodes.
+
+An example of the DQN algorithm in practice is shown in Figure \ref{fig:values} for the game Seaquest. What this demonstrates is that for sequences in frames 1 and 2 the immediate reward is 0 as indicated by the score at the top of the frame. However, the sequences of rewards and $Q$ values increase once the algorithm sees an opportunity to attack a target thus it has learned that attaching a target will have higher rewards in the future as indicated by the 60 points in the third frame. It knows this because its $Q$ value spikes at the first and second frame which lets the agent know it has high future rewards for the state action pair.
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=15cm]{example.png}
+\end{center}
+\caption{"The leftmost plot shows the predicted value function for a 30 frame segment of the game Seaquest. The three screenshots correspond to the frames labeled by A, B, and C respectively."\cite{DBLP:journals/corr/MnihKSGAWR13}}
+\label{fig:values}
+\end{figure}
+
+%    Wow: Did this approach result in great results?
+
+Results for their approach are shown in Figure \ref{fig:results}. Their approach vastly outmatched all other previous algorithms tested. This includes two other reinforcement learning algorithms; Sarsa and Contingency, which both required hand labeling of the features in order to be able to work, where as their approach had to learn the features as well as the reward sequences. Random just uniformly selects actions at random. They were also able to best human experts at 3 out of the 8 games which is very impressive. I think one of the most impressive results of this paper is the generality of their approach. Each of the games in Figure \ref{fig:results} has different rules and reward structures, yet they were able to train their DQN to learn superior policies to previous approaches. This to me shows that this approach is not a one-hit-wonder such as TD-gammon.
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[width=15cm]{results.png}
+\end{center}
+\caption{Results between a random approach, SARSA, Contingency, DQN (theirs), and a human expert. DQN performed better that all othe algorithms and better than the human on 3 of 8 games.}
+\label{fig:results}
+\end{figure}
+
+
+
+
+%core (the famous what-why-how-wow template for writing abstract/intro) (8 pts):
+%    What: What problem are the authors trying to solve? Is this a new problem? If not, what are the notable previous approaches, and what are their limitations?
+%    Why: Why did they choose this problem? Is it hard? Is it important?
+%    How: What's the authors' approach to tackle this problem?
+%    Wow: Did this approach result in great results?
+
+\section{Further}
+
+%    But: What flaws or limitations did you see in the authors' approach or results?
+
+The obvious flaw that comes to mind is the one will all deep learning models (and machine learning in general) and that is you need to have sufficient data to learn the features needed to adequately perform the task. Even though many advances have been made in deep learning over the past decade, deep learning still suffers from the problem of needing large amounts of data and training in order to function reasonably well. Also, for each game you have start from scratch in this approach even if the game is similar since there is no ability to transfer what was learned previously. It also uses no knowledge of the game and could be improved using heuristics specific to the game or be fed data from a human example to help speed things up.
+
+%    More: If you were to follow up on this line of work, what topics/methods will you work on?
+
+I would like to look into combining other techniques from machine learning and artificial intelligence to speed up the learning rate by using heuristics. Also, I would like to see how the training would be effected if using human examples combined with the reinforcement learning would help it or actually just end up stunting it.
+
+%    All: What's your overall feeling of this paper? What's the single take-home message you learned from it?
+
+I found this paper to be very inspiring and fascinating. Since this work came out there have been many advances in this field including the success of OpenAi winning in Dota \cite{Dota2}, and the very recent victory in capture the flag mode of Quake III \cite{QuakeIII}. Each of these more recent examples use techniques that were described in this paper and have continued to show success. Even though the above examples are related to video games, there is no reason that this type of work could not be extended to other task such. This could include learning better multi-robot team task such search and rescue through the use of simulators.
+
+
+\section{Relevance}
+
+For the most part this paper was outside the scope of this course. Fortunately I have taken several classes on robotic learning so I am familiar with reinforcement learning and have learned a little about deep learning as well. What this course helped with was understanding the importance of feature mapping to ensuring your algorithms can easily and correctly process data in a desired manner. In this paper they discussed transforming the frames of the game into specific image sizes (84x84x3 pixels) per frame prior to going through convolutions. Furthermore, it required roughly a million sequences saved to be able to learn from which is much larger than we were used to dealing with meaning they would need a better structure for data management. 
+
+I would say this paper is relevant to the field but the subject matter is not covered by this course so it may be difficult for someone to understand without further background. I think if someone had no prior knowledge of reinforcement learning or deep learning they would at least understand the idea of learning from data to maximize (or minimize) an objective function.
+
+For this paper I reviewed some old class notes on reinforcement/Q-learning as well doing some refresher studying on convulsional neural networks \footnote{http://ufldl.stanford.edu/tutorial/}. This seemed to be sufficient to be able to understand this paper.
+
+%	Did materials covered in this course help you understand this paper? How relevant is this paper to this course?
+%    What extra materials did you study in order to understand this paper? 
+
+\bibliography{hw5.bib}
+\bibliographystyle{ieeetr}
+
+
+
+
+
+%\bibliography{bibliography.bib}
+\end{document}

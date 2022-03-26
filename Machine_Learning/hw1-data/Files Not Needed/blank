@@ -1,0 +1,84 @@
+import numpy as np
+
+
+class KNN:
+
+    def __init__(self, train, dev, test, all_binary = False):
+        assert (type(train) is str), "Data must be string of the file name"
+        assert (type(dev) is str), "Data must be string of the file name"
+        assert (type(test) is str), "Data must be string of the file name"
+
+        all_binary = False
+        #self.train = self.format_data(train, all_binary)
+        self.train = train
+        #self.dev = self.format_data(dev, all_binary)
+        self.dev = dev
+        #self.test = self.format_data(test, all_binary)
+        self.test = test
+
+    def format_data(self, data, all_binary = False):
+        # Takes in the data set and converts it so that we can use it in our classifier
+        temp_data = list(map(lambda s: s.strip().split(", "), open(data).readlines()))
+
+        mapping = {}
+        new_data = []
+        for row in temp_data:
+            new_row = []
+            for j, x in enumerate(row):
+                if not all_binary:
+                    # If age and hours per week are not binarized
+                    try:
+                        feature = j
+                        mapping[feature] = int(x)
+                    except ValueError:
+                        feature = (j, x)
+                        if feature not in mapping:
+                            mapping[feature] = len(mapping)
+                else:
+                    feature = (j, x)
+                    if feature not in mapping:
+                        mapping[feature] = len(mapping)
+
+                new_row.append(mapping[feature])
+            new_data.append(new_row)
+
+        bindata = np.zeros((len(temp_data), len(mapping)), dtype=int)
+        mask = [1, 0, 0, 0, 0, 0, 0, 1, 0, 0] # Used to determine if int or not for age and hours worked
+        for i, row in enumerate(new_data):
+            for j, x in enumerate(row):
+                if not all_binary:
+                    m = mask[j]
+                    if m == 0:
+                        bindata[i][x] = 1
+                    elif m == 1:
+                        bindata[i][j] = x
+                else:
+                    bindata[i][x] = 1
+
+        #print(bindata)
+        return bindata
+
+    def euclid_dist(self, x, y):
+        return np.linalg.norm(x - y)
+
+    def knn_predict(self, data, k = 3):
+        # Predicts the output for each training example
+        for d in data:
+            dist = np.zeros((len(self.train)))
+            for train in self.train:
+                print(len(train), len(d))
+                print(self.euclid_dist(train, d))
+                break
+            print(dist)
+            break
+
+if __name__ == "__main__":
+    toy = 'toy.txt'
+    train = 'income.train.txt.5k'
+    dev = 'income.dev.txt'
+    test = 'income.test.blind'
+
+    example = KNN(train, dev, test)
+
+    #print(example.euclid_dist(example.train[4], example.train[8]))
+    example.knn_predict(example.dev)

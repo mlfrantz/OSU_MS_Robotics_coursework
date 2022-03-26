@@ -1,0 +1,53 @@
+Requirements
+Your Paper Review (min. 4 pages, max. 6 pages, 12 pt font, single-spaced, figs/tables at most 0.75 pages), due on Saturday June 8, must cover at least:
+
+    non-technical background (3 pts):
+    Who: Who are the authors? Which institutions are they from? Who are the PI and who are the students? Are there any interns?
+    Where: Where and when was this paper published? Note: it's possible that a paper is first published in a conference and later expanded to a journal paper, so check if this is the case. Did this paper receive any recognition such as an award or nomination? Does this paper have impact (number of citations)? Is the impact increasing or decreasing (trend in the number of citations)? Are there media reports about this paper?
+    Reproducibility: Did the authors create and release any dataset? If not, what the datasets did they use, and are they freely available online? Is there a clear train/dev/test split? Did the authors release their code? Are these datasets and code influential? Is there a demo? Can you find slides or talk videos about this paper? Overall, how reproducible is this paper?
+
+    core (the famous what-why-how-wow template for writing abstract/intro) (8 pts):
+    What: What problem are the authors trying to solve? Is this a new problem? If not, what are the notable previous approaches, and what are their limitations?
+    Why: Why did they choose this problem? Is it hard? Is it important?
+    How: What's the authors' approach to tackle this problem?
+    Wow: Did this approach result in great results?
+
+    further: (3 pts)
+    But: What flaws or limitations did you see in the authors' approach or results?
+    More: If you were to follow up on this line of work, what topics/methods will you work on?
+    All: What's your overall feeling of this paper? What's the single take-home message you learned from it?
+
+    relevance: (1 pt)
+    Did materials covered in this course help you understand this paper? How relevant is this paper to this course?
+    What extra materials did you study in order to understand this paper? 
+
+Use 12pt font, single space. Use LaTeX if possible.
+
+Hint: Google Scholar is your friend. Use it to find freely-available PDFs for journal papers, citation counts and trends, bibtex files, etc. 
+
+List of Candidate Papers
+
+    bias, bias amplification, and fairness in machine learning
+    Men Also Like Shopping: Reducing Gender Bias Amplification using Corpus-level Constraints (2017)
+    Feature-Wise Bias Amplification (2018)
+    Equality of Opportunity in Supervised Learning (2016)
+
+    large-scale machine learning
+    XGBoost
+
+    question answering and truly-blind competitions
+    SQuAD 1.0 (2016)
+    SQuAD 2.0 (2018)
+    CoCA (2018)
+
+    deep reinforcement learning
+    Atari: journal version (non-technical); conference version (more technical) (2015)
+    AlphaGo (2016)
+    AlphaGoZero (2017)
+    AlphaZero (2018--2019)
+
+    deep learning in language and vision
+    show and tell: Show and Tell: A Neural Image Caption Generator, 2014--2015
+    show, attend, and tell: Show, Attend, and Tell: Neural Image Caption Generation with Visual Attention, 2015--2016
+    neural machine translation: Neural Machine Translation by Jointly Learning to Align and Translate 2014--2015
+    sentence representation: Dependency-based Convolutional Neural Networks for Sentence Embeddings, 2015 

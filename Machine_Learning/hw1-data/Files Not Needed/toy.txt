@@ -1,0 +1,10 @@
+50, Self-emp-not-inc, Bachelors, Married-civ-spouse, Exec-managerial, White, Male, 13, United-States, <=50K
+38, Private, HS-grad, Divorced, Handlers-cleaners, White, Male, 40, United-States, <=50K
+53, Private, 11th, Married-civ-spouse, Handlers-cleaners, Black, Male, 40, United-States, <=50K
+28, Private, Bachelors, Married-civ-spouse, Prof-specialty, Black, Female, 40, Cuba, <=50K
+37, Private, Masters, Married-civ-spouse, Exec-managerial, White, Female, 40, United-States, <=50K
+49, Private, 9th, Married-spouse-absent, Other-service, Black, Female, 16, Jamaica, <=50K
+52, Self-emp-not-inc, HS-grad, Married-civ-spouse, Exec-managerial, White, Male, 45, United-States, >50K
+31, Private, Masters, Never-married, Prof-specialty, White, Female, 50, United-States, >50K
+42, Private, Bachelors, Married-civ-spouse, Exec-managerial, White, Male, 40, United-States, >50K
+37, Private, Some-college, Married-civ-spouse, Exec-managerial, Black, Male, 80, United-States, >50K
